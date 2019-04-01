@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/misc/NavBar'
-import { BrowserRoutes, Switch, Route, Redirect } from 'react-router-dom';
+import {  Switch, Route, Redirect } from 'react-router-dom';
 import Register from './components/auth/Register';
 
 class App extends Component {
@@ -11,11 +11,11 @@ class App extends Component {
       <div className="App">
         <NavBar/>
         <section>
-        <BrowserRouter> 
+          <Switch>
        
-          <Route exact path="/register" component={Register}/>
+            <Route exact path="/register" component={Register}/>
        
-        </BrowserRouter>
+          </Switch>
         </section>
       </div>
     );
