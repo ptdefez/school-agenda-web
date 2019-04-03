@@ -25,6 +25,8 @@ const validations = {
     let message;
     if (!value) {
       message = 'Introduzca su contraseña'
+    } else if(!value.length >= 6) {
+      message = 'La contraseña debe tener al menos 6 caracteres'
     }
     return message;
   },
@@ -97,7 +99,7 @@ export default class Register extends Component {
           .then(
             (user) => this.setState({ isRegister: true }),
             (error) => {
-              const { message, errors } = error.respose.data;
+              const { message, errors } = error.response.data;
               this.setState({
                 errors: {
                   ...errors,
