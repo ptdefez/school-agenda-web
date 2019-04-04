@@ -56,10 +56,10 @@ export default class Register extends Component {
            
         },
         errors: {
-            name: '',
-            email: '',
-            password: '',
-            repeatPassword: ''
+            name: true,
+            email: true,
+            password: true,
+            repeatPassword: true
         },
         touch: {},
         isRegistered: false
@@ -97,7 +97,7 @@ export default class Register extends Component {
         delete finalUser.repeatPassword;
         authService.register(finalUser)
           .then(
-            (user) => this.setState({ isRegister: true }),
+            (user) => this.setState({ isRegistered: true }),
             (error) => {
               const { message, errors } = error.response.data;
               this.setState({
@@ -136,7 +136,7 @@ export default class Register extends Component {
                         <div className="input-group-text" style={{ width: '42px' }}><i className="fa fa-user"></i></div>
                       </div>
                       <input type="text" className={`form-control ${touch.name && errors.name && 'is-invalid'}`} 
-                        name="name" placeholder="Name" 
+                        name="name" placeholder="Nombre" 
                         onChange={this.handleChange} 
                         value={user.name} 
                         onBlur={this.handleBlur} />
@@ -160,7 +160,7 @@ export default class Register extends Component {
                         <div className="input-group-text" style={{ width: '42px' }}><i className="fa fa-lock"></i></div>
                       </div>
                       <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
-                        name="password" placeholder="Password" 
+                        name="password" placeholder="Contraseña" 
                         onChange={this.handleChange} 
                         value={user.password} 
                         onBlur={this.handleBlur} />
@@ -173,7 +173,7 @@ export default class Register extends Component {
                         <div className="input-group-text" style={{ width: '42px' }}><i className="fa fa-lock"></i></div>
                       </div>
                       <input type="password" className={`form-control ${touch.repeatPassword && errors.repeatPassword && 'is-invalid'}`} 
-                        name="repeatPassword" placeholder="Repeat Password" 
+                        name="repeatPassword" placeholder="Repita contraseña" 
                         onChange={this.handleChange} 
                         value={user.repeatPassword} 
                         onBlur={this.handleBlur} />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/misc/NavBar'
+import Login from './components/auth/Login';
 import {  Switch, Route, Redirect } from 'react-router-dom';
 import Register from './components/auth/Register';
 
@@ -14,6 +15,7 @@ class App extends Component {
           <Switch>
        
             <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
        
           </Switch>
         </section>

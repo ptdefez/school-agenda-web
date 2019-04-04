@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import authService from '../../services/auth-services'
+import authService from '../../services/auth-service'
+import { withAuthConsumer} from '../../contexts/AuthStore'
  
-const emailPattern = /(.+)@(.+){2,}\.(.+){2,}/i;
+
  
 const validations = {
-    email: (value) => {
+    name: (value) => {
         let message;
         if (!value) {
-          message = 'El email es necesario';
-        } else if (!emailPattern.test(value)) {
-          message = 'Formato de email incorrecto'
-        }
+          message = 'El nombre es necesario';
+        } 
         return message;
       },
       password: (value) => {
@@ -27,11 +26,11 @@ class Login extends Component {
  
     state = {
         user: {
-            email: '',
+            name: '',
             password: ''
         },
         errors: {},
-        touth: {},
+        touch: {},
         isAuthenticate: false
     }
  
@@ -71,7 +70,7 @@ class Login extends Component {
                         this.props.onUserChange(user)
                     })
                 },
-                (errors) => {
+                (error) => {
                     const { message, errors } = error.response.data;
                     this.setState({
                         errors: {
@@ -97,7 +96,7 @@ class Login extends Component {
    
  
     render() {
-        const { isAuthenticate, touth, errors, user } = this.state;
+        const { isAuthenticate, touch, errors, user } = this.state;
         if (isAuthenticate) {
             return (<Redirect to="/" />);
         } else {
@@ -107,10 +106,10 @@ class Login extends Component {
                         <form onSubmit={this.handleSubmit}>
                             <div className="input-group mb-2">
                                 <div className="input-group-prepend">
-                                <div className="input-group-text"><i className="fa fa-envelope-o"></i></div>
+                                <div className="input-group-text"><i className="fa fa-user"></i></div>
                                 </div>
-                                <input type="text" className={`form-control ${touch.email && errors.email && 'is-invalid'}`}
-                                    name="email" placeholder="Email"
+                                <input type="text" className={`form-control ${touch.name && errors.name && 'is-invalid'}`}
+                                    name="name" placeholder="Nombre"
                                     onChange={this.handleChange}
                                     value={user.email}
                                     onBlur={this.handleBlur} />
@@ -122,7 +121,7 @@ class Login extends Component {
                                 <div className="input-group-text" style={{width: '42px'}}><i className="fa fa-lock"></i></div>
                                 </div>
                                     <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} 
-                                        name="password" placeholder="Password"
+                                        name="password" placeholder="Contraseña"
                                         onChange={this.handleChange} 
                                         value={user.password} 
                                         onBlur={this.handleBlur}/>
@@ -133,7 +132,7 @@ class Login extends Component {
                             </div>
                         </form>
                         <hr />
-                        <p className="text-center">Don't have an account? <Link to="/register">Sign up</Link></p>
+                        <p className="text-center">¿No está registrado? <Link to="/register">Registro</Link></p>
                     </div>
                 </div>
             );
@@ -141,3 +140,4 @@ class Login extends Component {
     }
 }
 
+export default withAuthConsumer(Login)
