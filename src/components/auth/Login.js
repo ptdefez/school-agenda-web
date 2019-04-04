@@ -87,6 +87,7 @@ class Login extends Component {
                    
                 
             )
+            return (<Redirect to="/" />)
         }
  
     }
