@@ -15,7 +15,7 @@ class NavBar extends Component {
     }
 
     render() {
-        const { isAuthenticated, user } = this.props
+        const { isAuthenticated, user, isTutor } = this.props
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <Link className="navbar-brand" to="/">School-Agenda</Link>
@@ -31,7 +31,14 @@ class NavBar extends Component {
                                 <NavLink className="nav-link" activeClassName="active" to="/">Profile</NavLink>
                                 </li>
                             </Fragment>
-                        }       
+                        }  
+                        {isTutor() &&
+                            <Fragment>
+                                <li className="nav-item">
+                                <NavLink className="nav-link" activeClassName="active" to="/classrooms">Classrooms</NavLink>
+                                </li>
+                            </Fragment>
+                        }     
                     </ul>
  
                     <ul className="navbar-nav my-2 my-lg-0">
@@ -48,7 +55,7 @@ class NavBar extends Component {
                         {isAuthenticated() &&
                             <Fragment>
                                 <li className="nav-item">
-                                <button className="nav-link" activeClassName="btn btn-primary nav-link" >{user.name}</button>
+                                <button className="nav-link" ClassName="btn btn-primary nav-link" >{user.name}</button>
                                 </li>
                                 <li className="nav-item">
                                 <button className="nav-link" activeClassName="btn btn-primary nav-link" onClick={this.handleLogout}>Logout</button>
