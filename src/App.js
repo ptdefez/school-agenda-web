@@ -5,7 +5,10 @@ import NavBar from './components/misc/NavBar'
 import Login from './components/auth/Login';
 import {  Switch, Route, Redirect } from 'react-router-dom';
 import Register from './components/auth/Register';
-import Profile from './components/auth/Profile';
+import Profile from './components/users/Profile';
+import PrivateRoute from './guards/PrivateRoute';
+import EditProfile from './components/users/EditProfile';
+
 
 class App extends Component {
   render() {
@@ -17,7 +20,8 @@ class App extends Component {
        
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
-            <Route exact path="/" component={Profile}/>
+            <PrivateRoute exact path="/" component={Profile}/>
+            <PrivateRoute exact path="/edit" component={EditProfile}/>
           </Switch>
         </section>
       </div>
