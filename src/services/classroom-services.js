@@ -3,19 +3,19 @@ import http from './base-http-service';
 const list = () => http.get('/classrooms')
     .then(response => response.data)
  
-const create = (classroom) => http.post('/classroom', classroom)
+const create = (classroom) => http.post('/classrooms', classroom)
     .then(response => response.data)
  
-const get = (id) => http.get(`/classroom/${id}`)
+const get = (id) => http.get(`/classrooms/${id}`)
     .then(response => response.data)
  
-const update = (id) => http.put(`/classroom/${id}`)
+const update = (id) => http.put(`/classrooms/${id}`)
     .then(response => response.data)
  
-const addStudent = (id) => http.put(`/classroom/${id}/addStudent`)
+const addStudent = (id) => http.put(`/classrooms/${id}/addStudent`)
     .then(response => response.data)
  
-const deleteClassroom = (id) => http.delete(`/classroom/${id}`)
+const deleteClassroom = (id) => http.delete(`/classrooms/${id}`)
     .then(response => response.data)
  
 export default {

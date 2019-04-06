@@ -17,7 +17,7 @@ class Profile extends Component {
                 
                     <div className="media-body">
                         <h5 className="mt-0">{user.name}</h5><span>{user.role}</span>
-                        <p>Clase: {user.classroom}</p> 
+                        <p>Clase: {user.classroom.name}</p> 
                         <p>email: {user.email}</p>
                         <Link class="btn btn-primary" to="/edit" role="button">Editar Perfil</Link>                
 

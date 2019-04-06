@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import authService from '../../services/auth-service'
 import usersService from '../../services/user-service'
+import classroomService from '../../services/classroom-services'
 import { withAuthConsumer } from '../../contexts/AuthStore';
  
 const emailPattern = /(.+)@(.+){2,}\.(.+){2,}/i;
@@ -39,9 +40,10 @@ class EditProfile extends Component {
             name: '',
             email: '',
             classroom: '',
-            avatarURL: '',
-            avatarDefaul: "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"
+            avatarDefault: "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"
+
         },
+        classrooms: [],
         errors: {},
         touch: {}
     }
@@ -71,11 +73,18 @@ class EditProfile extends Component {
     }
  
     handleSubmit = (e) => {
+        const { user } = this.state;
+        const stateUser = {...user};
+        delete stateUser.avatarURL;
         e.preventDefault();
         if(this.isValid()) {
-            usersService.updateProfile(this.state.user)
+            usersService.updateProfile(user.id, stateUser)
                 .then(
-                    (user) => this.setState({ user: {...this.state.user, ...user}}),
+                    (newUser) => {
+                        this.setState({ user: {...stateUser, ...newUser}}, () => {
+                            this.props.onUserChange(newUser);
+                        });
+                    },
                     (error) => {
                         const { message, errors } = error.response.data;
                         this.setState({
@@ -94,15 +103,27 @@ class EditProfile extends Component {
     }
  
     componentDidMount() {
-        usersService.getProfile()
+        usersService.getProfile(this.props.user.id)
             .then(
-                (user) => this.setState({ user: {...this.state.user, ...user} }),
+                (user) => {
+                    if (user.classroom) {
+                        user.classroom = user.classroom.id
+                    }
+                    this.setState({ user })
+            },
                 (error) => console.error(error)
             )
+        classroomService.list()
+                .then(
+                    (classrooms) => this.setState({classrooms}),
+                    (error) => console.error(error)
+                )
     }
+
  
     render() {
-        const { errors, user, touch } = this.state;
+        const { errors, user, touch, classrooms } = this.state;
+        console.log(user)
  
         return (
             <div className="box mx-auto">
@@ -123,7 +144,16 @@ class EditProfile extends Component {
                             onChange={this.handleChange} 
                             onBlur={this.handleBlur} 
                             value={user.classroom}>
-                        {}
+
+                        {classrooms.map(classroom => (
+                            <option
+                                value={classroom.id}
+                                selected={user.classroom && user.classroom.id === classroom.id}
+                            >
+                                {console.log(user.classroom && user.classroom.id === classroom.id)}
+                                {classroom.name}
+                            </option>
+                        ))}
                         </select>
                         <div className="invalid-feedback">{ errors.classroom }</div>
                     </div>
@@ -131,8 +161,8 @@ class EditProfile extends Component {
                     </form>
                 </div>
                 <div className="col-6 pt-4">
-                    <label htmlFor="avatarURL" className="avatar"><img src={user.avatarURL ? URL.createObjectURL(user.avatarURL) : user.avatarDefaul} className="rounded mb-3" alt="Generic placeholder image" /></label>
-                    <input type="file" id="avatar"  name="avatarURL" onChange={this.handleChange} />
+                    <label htmlFor="avatarURL" className="avatar"><img src={user.avatarURL ? user.avatarURL : user.avatarDefault} className="rounded mb-3" alt="Generic placeholder image" /></label>
+                    <input type="file" id="avatar"  name="avatar" onChange={this.handleChange} />
                     <button className="btn btn-white" form="profile-form" type="submit" disabled={!this.isValid()}>Editar Perfil</button>
                     
                 </div>
