@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { classroomService } from '../../services'
 import ClassroomItem from './ClassroomItem'
+import { Link } from 'react-router-dom';
 import { withAuthConsumer } from '../../contexts/AuthStore';
 
 
@@ -29,12 +30,18 @@ class ClassroomList extends Component {
                 onClickDeleteClassroom ={this.handleDeleteClassroom} />));
 
         return (
-            <div className="row">
-            <div className="col-12">
-              <ul className="list-group mt-5">
-                {classrooms}
-              </ul>
-            </div>
+            <div className="row justify-content-center mt-5">
+                <div className = "box mx-auto col-sm-8">
+                    <h2>Listado de Clases</h2>
+                    <div className="col-xs-12 ">
+                        <ul className="list-group mt-5">
+                            {classrooms}
+                        </ul>
+                    </div>
+                    <div className="mt-3">          
+                        <Link className="btn btn-sm btn-primary" to={`/classrooms/create`}>Crear Clase</Link>
+                    </div>
+                </div>
           </div>
         )
     

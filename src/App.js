@@ -10,6 +10,10 @@ import PrivateRoute from './guards/PrivateRoute';
 import EditProfile from './components/users/EditProfile';
 import ClassroomList from './components/classroom/ClassroomList';
 import ClassroomShow from './components/classroom/ClassroomShow';
+import EditClassroom from './components/classroom/EditClassroom';
+import AddStudent from './components/classroom/AddStudent';
+import CreateClassroom from './components/classroom/CreateClassroom';
+import StudentsProfile from './components/users/StudensProfile';
 
 
 class App extends Component {
@@ -23,9 +27,14 @@ class App extends Component {
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
             <PrivateRoute exact path="/" component={Profile}/>
+            <PrivateRoute exact path="/students/:id" role="TUTOR" component={StudentsProfile}/>
             <PrivateRoute exact path="/edit" component={EditProfile}/>
             <PrivateRoute exact path="/classrooms" role="TUTOR" component={ClassroomList}/>
+            <PrivateRoute exact path="/classrooms/:id/edit" role="TUTOR" component={EditClassroom}/>
+            <PrivateRoute exact path="/classrooms/create" role="TUTOR" component={CreateClassroom}/>
+            <PrivateRoute exact path="/classrooms/:id/addStudent" role="TUTOR" component={AddStudent}/>
             <PrivateRoute exact path="/classrooms/:id" role="TUTOR" component={ClassroomShow}/>
+            
           </Switch>
         </section>
       </div>

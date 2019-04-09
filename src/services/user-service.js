@@ -1,7 +1,11 @@
 import http from './base-http-service';
  
-const userList = () => http.get('/users')
-    .then(response => response.data);
+const userList = (query) => {
+    return http.get('/users', {
+        params: query || {}
+    }).then(response => response.data);
+}
+    
  
 const getProfile = (id) => http.get(`/users/${id}`)
     .then(response => response.data)

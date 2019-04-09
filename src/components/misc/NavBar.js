@@ -55,10 +55,10 @@ class NavBar extends Component {
                         {isAuthenticated() &&
                             <Fragment>
                                 <li className="nav-item">
-                                <button className="nav-link" ClassName="btn btn-primary nav-link" >{user.name}</button>
+                                <button className="nav-link" className="btn btn-primary nav-link" >{user.name}</button>
                                 </li>
                                 <li className="nav-item">
-                                <button className="nav-link" activeClassName="btn btn-primary nav-link" onClick={this.handleLogout}>Logout</button>
+                                <button className="nav-link" ClassName="btn btn-primary nav-link" onClick={this.handleLogout}>Logout</button>
                                 </li>
                             </Fragment> 
                         }   

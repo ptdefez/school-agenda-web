@@ -13,15 +13,15 @@ class ClassroomItem extends Component {
     render() {
         const { id, name, tutor, students, tutorOptions} = this.props;
         return (
-            <li key={id} className="list-group-item d-flex justify-content-between align-items-center">
-               <Link to={`/classrooms/${id}`}><span>
-                    {name}
-                   {tutorOptions && <i className="mr-2 fa fa-times text-danger" 
-                    onClick={this.handleDelete.bind(this, id)}></i>}   
-               </span></Link>
-               <span>Tutor: {tutor.name}</span>
-            </li>
- 
+            <div>
+                <li key={id} className="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{tutorOptions && <i className="mr-2 fa fa-times text-danger" 
+                            onClick={this.handleDelete.bind(this, id)}></i>}</span>
+                    <Link to={`/classrooms/${id}`}> <span>{name}  
+                    </span></Link>
+                    <span>Tutor: {tutor.name}</span>
+                </li>
+            </div>
         )
     }
 }

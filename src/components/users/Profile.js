@@ -10,18 +10,21 @@ class Profile extends Component {
     
         return (
             <div className="row justify-content-center mt-5">
-                
-                <div className="media">
-                   
-                    <img src={user.avatarURL || "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"} alt="Generic placeholder image"/>
-                
-                    <div className="media-body">
-                        <h5 className="mt-0">{user.name}</h5><span>{user.role}</span>
-                        <p>Clase: {user.classroom.name}</p> 
-                        <p>email: {user.email}</p>
-                        <Link class="btn btn-primary" to="/edit" role="button">Editar Perfil</Link>                
+                <div className="box">
+                    <div className="media">
+                        <div className="media-left">
+                            <figure className="figure">
+                                <img className="figure-img img-fluid rounded" src={user.avatarURL || "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"} alt="Generic placeholder image"/>
+                        </figure>
+                        </div>       
+                        <div className="media-body">
+                            <h5 className="mt-0">{user.name}</h5><span>{user.role}</span>
+                            <p>Clase: {user.classroom.name}</p> 
+                            <p>email: {user.email}</p>
+                            <Link class="btn btn-primary" to="/edit" role="button">Editar Perfil</Link>                
 
-                        
+                            
+                        </div>
                     </div>
                 </div>
            </div>     

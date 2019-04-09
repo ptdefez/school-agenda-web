@@ -9,10 +9,16 @@ const create = (classroom) => http.post('/classrooms', classroom)
 const get = (id) => http.get(`/classrooms/${id}`)
     .then(response => response.data)
  
-const update = (id) => http.put(`/classrooms/${id}`)
-    .then(response => response.data)
+const update = (id, classroom) => {
+    classroom.tutor = classroom.tutor.id || classroom.tutor;
+    return http.put(`/classrooms/${id}`, classroom)   
+        .then(response => response.data)
+}
  
-const addStudent = (id) => http.put(`/classrooms/${id}/addStudent`)
+const addStudent = (id, student) => http.put(`/classrooms/${id}/addStudent`, {id: student})
+    .then(response => response.data)
+
+const expelStudent = (id, student) => http.put(`/classrooms/${id}/expelStudent`, { id: student})
     .then(response => response.data)
  
 const deleteClassroom = (id) => http.delete(`/classrooms/${id}`)
@@ -24,5 +30,6 @@ export default {
     get,
     update,
     addStudent,
+    expelStudent,
     deleteClassroom
 }

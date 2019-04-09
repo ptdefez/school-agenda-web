@@ -66,7 +66,7 @@ class Login extends Component {
             authService.authenticate(this.state.user)
             .then(
                 (user) => {
-                    this.setState({ authenticate: true }, () => {
+                    this.setState({ isAuthenticate: true }, () => {
                         this.props.onUserChange(user)
                     })
                 },
@@ -89,7 +89,7 @@ class Login extends Component {
             )
             return (<Redirect to="/" />)
         }
- 
+        
     }
 
     hasErrors = () => Object.keys(this.state.user)
