@@ -54,9 +54,10 @@ class NavBar extends Component {
                         }   
                         {isAuthenticated() &&
                             <Fragment>
-                                <li className="nav-item">
-                                <button className="nav-link" className="btn btn-primary nav-link" >{user.name}</button>
-                                </li>
+                                <div className="nav-item ">
+                                <img className="img-fluid rounded-circle" width="50" height="50" src={user.avatarURL || "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"}/>
+                                <span className="nav-link" className="nav-link" >{user.name}</span>
+                                </div>
                                 <li className="nav-item">
                                 <button className="nav-link" ClassName="btn btn-primary nav-link" onClick={this.handleLogout}>Logout</button>
                                 </li>

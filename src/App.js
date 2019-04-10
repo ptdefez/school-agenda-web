@@ -14,6 +14,7 @@ import EditClassroom from './components/classroom/EditClassroom';
 import AddStudent from './components/classroom/AddStudent';
 import CreateClassroom from './components/classroom/CreateClassroom';
 import StudentsProfile from './components/users/StudensProfile';
+import CreateQualification from './components/qualifications/CreateQualification';
 
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
             <Route exact path="/login" component={Login}/>
             <PrivateRoute exact path="/" component={Profile}/>
             <PrivateRoute exact path="/students/:id" role="TUTOR" component={StudentsProfile}/>
+            <PrivateRoute exact path="/classrooms/:classroomId/qualifications/:studentId" role="TUTOR" component={CreateQualification}/>
             <PrivateRoute exact path="/edit" component={EditProfile}/>
             <PrivateRoute exact path="/classrooms" role="TUTOR" component={ClassroomList}/>
             <PrivateRoute exact path="/classrooms/:id/edit" role="TUTOR" component={EditClassroom}/>

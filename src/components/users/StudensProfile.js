@@ -49,7 +49,7 @@ class StudentsProfile extends Component {
                             <h5 className="mt-0">{user.name}</h5><span>{user.role}</span>
                             {/* <p>Clase: {user.classroom.name}</p>  */}
                             <p>email: {user.email}</p>
-                            <Link className="btn btn-primary" to="" role="button">Poner Nota</Link>                
+                                            
 
                             
                         </div>

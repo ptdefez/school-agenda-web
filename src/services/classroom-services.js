@@ -1,8 +1,11 @@
 import http from './base-http-service';
  
-const list = () => http.get('/classrooms')
-    .then(response => response.data)
- 
+const list = (query) => {
+    return http.get('/classrooms', {
+        params: query || {}
+    }).then(response => response.data)
+}
+
 const create = (classroom) => http.post('/classrooms', classroom)
     .then(response => response.data)
  
