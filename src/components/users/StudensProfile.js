@@ -50,10 +50,6 @@ class StudentsProfile extends Component {
     }
 
     onFilter = (e) => {
-        // this.setState({
-        //     filteredSubject: e.target.value
-        // })
-        // this.componentDidMount()
         const filteredSubject = e.target.value
         console.log(filteredSubject)
         const newGrades = e.target.value === ""

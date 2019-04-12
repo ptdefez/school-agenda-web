@@ -1,6 +1,6 @@
 import http from './base-http-service';
 
-const list = () => http.get('/qualification')
+const list = (params) => http.get('/qualifications', { params})
     .then(response => response.data)
  
 const create = (qualification) => {
