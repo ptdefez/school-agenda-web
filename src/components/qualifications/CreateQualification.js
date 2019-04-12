@@ -235,6 +235,7 @@ class CreateQualification extends Component {
                                 <button  type="submit" className="btn btn-primary " disabled={!this.isValid()}>Poner nota</button>
                         </div>
                     </form>
+                    <a className="float-right"><i className='fa fa-reply fa-2x mt-3 text-danger' onClick={() => this.props.history.go(-1)}></i></a>  
                 </div>
             </div>
         )

@@ -41,7 +41,9 @@ class ClassroomList extends Component {
                     <div className="mt-3">          
                         <Link className="btn btn-sm btn-primary" to={`/classrooms/create`}>Crear Clase</Link>
                     </div>
+                    <a className="float-right"><i className='fa fa-reply fa-2x mt-3 text-danger' onClick={() => this.props.history.go(-1)}></i></a> 
                 </div>
+                
           </div>
         )
     

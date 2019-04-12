@@ -183,15 +183,6 @@ class EditClassroom extends Component {
             )
            
 
-        // const studentsOpts = students.map(student => {
-        //         // console.log(student.id === classroom.student.id)
-        //         return (
-        //             <li key={student.id} value={student.id} className="list-group-item d-flex justify-content-between align-items-center">{student.name}
-        //             <i className="mr-3 fa fa-check text-success" 
-        //             onClick={this.addStudent.bind(this, student.id)}></i></li>
-        //         )
-        //     });
-
         return (
 
             
@@ -220,11 +211,12 @@ class EditClassroom extends Component {
                                 </select>
                                 <div className="invalid-feedback">{errors.classroom}</div>
                             </div>
-                            <div className="col-6 pt-3">
+                            <div className=" pt-3">
 
-                            <button className="btn btn-primary" form="profile-form" type="submit" disabled={!this.isValid()}>Editar clase</button>
-
+                                <button className="btn btn-primary" form="profile-form" type="submit" disabled={!this.isValid()}>Editar clase</button>
+                                <a className="float-right"><i className='fa fa-reply fa-2x mt-3 text-danger' onClick={() => this.props.history.go(-1)}></i></a> 
                             </div>
+                            
 
                             <div className="form-group pt-3">
                                 <label>Eliminar Alumnos:</label>
@@ -238,13 +230,6 @@ class EditClassroom extends Component {
                                     </ul>
                                   
 
-                                {/* <select className={`form-control ${touch.students && errors.students ? 'is-invalid' : ''}`}
-                                    name="students"
-                                    onChange={this.handleChange}
-                                    onBlur={this.handleBlur}
-                                    value={classroom.student}>
-                                    {studentsOpts}
-                                </select> */}
                                 <div className="invalid-feedback">{errors.classroom}</div>
                             </div>
 

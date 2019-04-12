@@ -35,10 +35,10 @@ class Profile extends Component {
                 onClickDeleteClassroom ={this.handleDeleteClassroom} />));
     
         return (
-            <div className="row justify-content-center mt-5">
-                <div className="box">
+            <div className="box mx-auto mt-5">
+                <div className="container">
                     <div className="media">
-                        <div className="media-left">
+                        <div className="media-left mr-5">
                             <figure className="figure">
                                 <img className="figure-img img-fluid rounded" src={user.avatarURL || "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"} alt="Generic placeholder image"/>
                         </figure>

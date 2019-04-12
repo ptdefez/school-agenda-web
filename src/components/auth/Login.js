@@ -102,8 +102,8 @@ class Login extends Component {
             return (<Redirect to="/" />);
         } else {
             return (
-                <div className="row justify-content-center mt-5">
-                    <div className="col-xs-12 col-3">
+                <div className="row justify-content-center mt-5 ">
+                    <div className="col-xs-12 col-3 mt-5 pt-5">
                         <form onSubmit={this.handleSubmit}>
                             <div className="input-group mb-2">
                                 <div className="input-group-prepend">

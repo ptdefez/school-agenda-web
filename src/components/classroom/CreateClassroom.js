@@ -142,20 +142,12 @@ class CreateClassroom extends Component {
                 <option key={tutor.id} value={tutor.id}>{tutor.name}</option>
             )
         });
-        // const studentsOpts = students.map(student => {
-        //     // console.log(student.id === classroom.student.id)
-        //     return (
-        //         <li key={student.id} value={student.id} className="list-group-item d-flex justify-content-between align-items-center">{student.name}
-        //         <i className="mr-3 fa fa-check text-success" 
-        //         onClick={this.addStudent.bind(this, student.id)}></i></li>
-        //     )
-        // });
-
+     
         return (
-            <div className = "box mx-auto" >
-            <div className="container">
+            <div className = "row justify-content-center mt-5 ">
+            <div className="box mx-auto col-sm-4 mt-5">
 
-                <div className="col-6">
+                <div className="">
                     <h3>Clase</h3>
                     <form id="profile-form" className="mt-4" onSubmit={this.handleSubmit}>
                         <div className="form-group">
@@ -173,6 +165,7 @@ class CreateClassroom extends Component {
                                 onChange={this.handleChange}
                                 onBlur={this.handleBlur}
                                 value={classroom.tutor.id}>
+                                <option selected>Selecciona...</option>
                                 {tutorsOpts}
                             </select>
                             <div className="invalid-feedback">{errors.classroom}</div>
@@ -182,20 +175,9 @@ class CreateClassroom extends Component {
                         <button className="btn btn-primary" form="profile-form" type="submit" disabled={!this.isValid()}>Crear Clase</button>
                         </div>
 
-                        {/* <div className="list-group mt-4">
-                            <label>Listado de Estudiantes:</label>
-                            <ul >
-                                {studentsOpts}
-                            </ul>
-
-
-                        </div> */}
-
-                      
-
                     </form>
                 </div>
-               
+                <a className="float-right"><i className='fa fa-reply fa-2x mt-3 text-danger' onClick={() => this.props.history.go(-1)}></i></a> 
                 
             </div>
         </div>

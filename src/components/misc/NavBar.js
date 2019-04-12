@@ -10,7 +10,7 @@ class NavBar extends Component {
         authService.logout()
             .then( () => {
                 this.props.onUserChange({})
-                this.props.history.push('/authenticate')
+                this.props.history.push('/login')
             })
     }
 
@@ -54,12 +54,12 @@ class NavBar extends Component {
                         }   
                         {isAuthenticated() &&
                             <Fragment>
-                                <div className="nav-item ">
+                                <div className="nav-item text-center align-middle mr-3">
                                 <img className="img-fluid rounded-circle" width="50" height="50" src={user.avatarURL || "http://ecuciencia.utc.edu.ec/media/foto/default-user_x5fGYax.png"}/>
-                                <span className="nav-link" className="nav-link" >{user.name}</span>
+                                <span className="nav-link active" >{user.name}</span>
                                 </div>
                                 <li className="nav-item">
-                                <button className="nav-link" ClassName="btn btn-primary nav-link" onClick={this.handleLogout}>Logout</button>
+                                <Link className="nav-link"  onClick={this.handleLogout}><i className='fa fa-power-off fa-3x'></i></Link>
                                 </li>
                             </Fragment> 
                         }   

@@ -171,6 +171,7 @@ class EditProfile extends Component {
                             <button className="btn btn-primary" form="profile-form" type="submit" disabled={!this.isValid()}>Editar Perfil</button>
 
                         </div>
+                        <a className="float-right"><i className='fa fa-reply fa-2x mt-3 text-danger' onClick={() => this.props.history.go(-1)}></i></a>  
                     </div>
                 </div>
             </div>                                
